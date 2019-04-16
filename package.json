@@ -1,0 +1,58 @@
+{
+  "name": "leetcode-mvp-services",
+  "version": "1.0.0",
+  "description": "My Moleculer microservices project",
+  "scripts": {
+    "dev": "cross-env TRANSPORTER=nats://192.168.5.43:4222 moleculer-runner --repl --hot services",
+    "start": "moleculer-runner",
+    "cli": "moleculer connect NATS",
+    "ci": "jest --watch",
+    "test": "jest --coverage",
+    "lint": "eslint services",
+    "dc:up": "docker-compose up --build -d",
+    "dc:down": "docker-compose down"
+  },
+  "keywords": [
+    "microservices",
+    "moleculer"
+  ],
+  "author": "postor@gmail.com",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "eslint": "^5.10.0",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
+    "moleculer-repl": "^0.5.3"
+  },
+  "dependencies": {
+    "moleculer": "^0.13.0",
+    "moleculer-db": "^0.7.8",
+    "moleculer-db-adapter-mongo": "^0.4.2",
+    "moleculer-web": "^0.8.0",
+    "nats": "^1.0.1"
+  },
+  "engines": {
+    "node": ">= 8.x.x"
+  },
+  "jest": {
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node",
+    "rootDir": "./services",
+    "roots": [
+      "../test"
+    ]
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/postor/leetcode-mvp-services.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/postor/leetcode-mvp-services/issues"
+  },
+  "homepage": "https://github.com/postor/leetcode-mvp-services#readme"
+}
