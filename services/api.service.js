@@ -11,9 +11,9 @@ module.exports = {
 		port: process.env.PORT || 3001,
 
 		routes: [{
-			path: "/api",
+			path: "/",
 			whitelist: [
-				// Access to any actions in all services under "/api" URL
+				// Access to any actions in all services under "/" URL
 				"**"
 			]
 		}],

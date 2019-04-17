@@ -11,11 +11,11 @@ module.exports = {
     "mongodb://192.168.5.43/leetcode"),
 	collection: "problems",
 	settings: {
-		pageSize: 20
+		pageSize: 50
 	},
 	async afterConnected() {
 		const db = this.adapter;
-		if(!await db.count()){
+		if (!await db.count()) {
 			await db.insertMany(defaultProblems);
 		}
 	}
