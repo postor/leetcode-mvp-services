@@ -53,6 +53,17 @@ services:
     image: 'bitnami/mongodb:latest'
     volumes:
       - mongodb:/bitnami
+  
+  runner:
+    image: postor/leetcode-mvp-runner
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
 
+  web:
+    image: postor/leetcode-mvp-runner
+    env_file: docker-compose.env
+    ports:
+      - "80:3000"
+  
 volumes:
   mongodb：
