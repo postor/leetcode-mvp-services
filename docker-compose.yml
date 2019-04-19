@@ -21,13 +21,27 @@ services:
       - "traefik.frontend.entryPoints=http"
       - "traefik.frontend.rule=PathPrefix:/"
 
-  greeter:
+  problems:
     build:
       context: .
     image: leetcode-mvp-services
     env_file: docker-compose.env
     environment:
-      SERVICES: greeter
+      SERVICES: problems
+    links:
+      - nats
+      - mongodb
+    depends_on:
+      - nats
+      - mongodb
+
+  answers:
+    build:
+      context: .
+    image: leetcode-mvp-services
+    env_file: docker-compose.env
+    environment:
+      SERVICES: answers
     links:
       - nats
       - mongodb
@@ -56,14 +70,16 @@ services:
   
   runner:
     image: postor/leetcode-mvp-runner
+    env_file: docker-compose.env
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/leetcode-mvp-runner:/tmp/leetcode-mvp-runner
 
   web:
-    image: postor/leetcode-mvp-runner
+    image: postor/leetcode-mvp-web
     env_file: docker-compose.env
     ports:
       - "80:3000"
   
 volumes:
-  mongodb：
+  mongodb:
