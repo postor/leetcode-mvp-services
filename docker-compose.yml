@@ -79,7 +79,13 @@ services:
     image: postor/leetcode-mvp-web
     env_file: docker-compose.env
     ports:
-      - "80:3000"
+      - "80:3000"      
+    links:
+      - api
+      - runner
+    depends_on:
+      - api
+      - runner
   
 volumes:
   mongodb:
