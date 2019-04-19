@@ -1,14 +1,29 @@
-[![Moleculer](https://badgen.net/badge/Powered%20by/Moleculer/0e83cd)](https://moleculer.services)
+# leetcode-mvp
 
-# leetcode-mvp-services
+leetcode的最小可用实现 | mvp realization of leetcode
 
-## NPM scripts
+![screenshot](./screenshot.gif)
 
-- `npm run dev`: Start development mode (load all services locally with hot-reload & REPL)
-- `npm run start`: Start production mode (set `SERVICES` env variable to load certain services)
-- `npm run cli`: Start a CLI and connect to production. Don't forget to set production namespace with `--ns` argument in script
-- `npm run lint`: Run ESLint
-- `npm run ci`: Run continuous test mode with watching
-- `npm test`: Run tests & generate coverage report
-- `npm run dc:up`: Start the stack with Docker Compose
-- `npm run dc:down`: Stop the stack with Docker Compose
+# 服务搭建 | try it yourself
+
+环境 | env
+
+- linux
+- docker
+- docker-compose
+
+启动 | up
+
+```
+git clone https://github.com/postor/leetcode-mvp-services
+
+cd leetcode-mvp-services
+
+docker-compose up -d
+```
+
+使用 | visit
+
+等待docker pulling和服务启动后访问 http://localhost/
+
+wait for docker pulling and service start up, then open http://localhost/

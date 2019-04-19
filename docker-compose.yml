@@ -10,6 +10,7 @@ services:
     environment:
       SERVICES: api
       PORT: 3000
+    restart: always
     links:
       - nats
     depends_on:
@@ -28,6 +29,7 @@ services:
     env_file: docker-compose.env
     environment:
       SERVICES: problems
+    restart: always
     links:
       - nats
       - mongodb
@@ -42,6 +44,7 @@ services:
     env_file: docker-compose.env
     environment:
       SERVICES: answers
+    restart: always
     links:
       - nats
       - mongodb
@@ -49,24 +52,15 @@ services:
       - nats
       - mongodb
 
-
   nats:
     image: nats
-
-  traefik:
-    image: traefik
-    command: --web --docker --docker.domain=docker.localhost --logLevel=INFO --docker.exposedbydefault=false
-    ports:
-      - "3000:80"
-      - "3001:8080"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /dev/null:/traefik.toml
+    restart: always
 
   mongodb:
     image: 'bitnami/mongodb:latest'
     volumes:
       - mongodb:/bitnami
+    restart: always
   
   runner:
     image: postor/leetcode-mvp-runner
@@ -74,12 +68,14 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/leetcode-mvp-runner:/tmp/leetcode-mvp-runner
+    restart: always
 
   web:
     image: postor/leetcode-mvp-web
     env_file: docker-compose.env
     ports:
-      - "80:3000"      
+      - "80:3000"   
+    restart: always   
     links:
       - api
       - runner
