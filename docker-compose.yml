@@ -51,6 +51,21 @@ services:
     depends_on:
       - nats
       - mongodb
+      
+  codes:
+    build:
+      context: .
+    image: leetcode-mvp-services
+    env_file: docker-compose.env
+    environment:
+      SERVICES: codes
+    restart: always
+    links:
+      - nats
+      - mongodb
+    depends_on:
+      - nats
+      - mongodb
 
   nats:
     image: nats
