@@ -4,11 +4,9 @@ const DbService = require("moleculer-db");
 const MongoDBAdapter = require("moleculer-db-adapter-mongo");
 const defaultProblems = require("../data/default-problems");
 
-module.exports = {
+const service = {
 	name: "problems",
 	mixins: [DbService],
-	adapter: new MongoDBAdapter(process.env.MONGO_URI ||
-    "mongodb://192.168.5.43/leetcode"),
 	collection: "problems",
 	settings: {
 		pageSize: 50
@@ -20,3 +18,9 @@ module.exports = {
 		}
 	}
 };
+
+if (process.env.MONGO_URI) {
+	service.adapter = new MongoDBAdapter(process.env.MONGO_URI);
+}
+
+module.exports = service;
