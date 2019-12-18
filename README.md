@@ -4,6 +4,8 @@ leetcode的最小可用实现 | mvp realization of leetcode
 
 ![screenshot](./screenshot.gif)
 
+quick glance https://www.youtube.com/watch?v=l0e9H_DOfyM&list=PLM1v95K5B1ntVsYvNJIxgRPppngrO_X4s&index=7
+
 # 服务搭建 | try it yourself
 
 环境 | env
